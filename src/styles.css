@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background: url('./assets/images/psbckgrnd.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;}
+
+    .mat-form-field--inline {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .mat-form-field--inline .mat-form-field{
+        display: inline-block;
+        width: 100%;
+        vertical-align: middle;
+    }
+    
+    .mat-form-field--inline .mat-form-field:nth-child(n){
+        margin-right: 20px;
+    }
+
+    table {
+        width: 150%;
+      }

@@ -1,0 +1,113 @@
+<div class='container-fluid'>
+    <div class="row">
+        <h1 style="font-family:verdana; font-size:150%; color:blue;">Search Address</h1>
+    </div>
+</div>
+<div *ngIf="isAdvanceSearch; then thenBlock else elseBlock"></div>
+<ng-template #elseBlock>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-9"></div>
+            <mat-form-field style="width: 75%;">
+                <mat-label>Address ID:</mat-label>
+                <input type="text" matInput [formControl]="addressIdControl" [matAutocomplete]="autoAddressIdSingle">
+                <mat-autocomplete #autoAddressIdSingle="matAutocomplete">
+                    <mat-option *ngFor="let option of addressIdFilteredOptions | async" [value]="option.value">
+                        {{option.value}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <div class='col-md-3'>
+                <a mat-flat-button href="#" (click)="onAdvanceSearch()">Advance Search</a>
+                <!-- <button mat-raised-button color="primary" (click)="onAdvanceSearch()">Advance Search</button> -->
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #thenBlock>
+    <div class='container-fluid'>
+        <div class="row">
+            <li class="mat-form-field--inline">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Address ID:</mat-label>
+                    <input type="text" matInput [formControl]="addressIdControl" [matAutocomplete]="autoAddressId">
+                    <mat-autocomplete #autoAddressId="matAutocomplete">
+                        <mat-option *ngFor="let option of addressIdFilteredOptions | async" [value]="option.value">
+                            {{option.value}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+                <!-- <mat-form-field class="example-full-width">
+                <mat-label>Address ID:</mat-label>
+                <input matInput>
+            </mat-form-field> -->
+                <mat-form-field class="example-full-width">
+                    <mat-label>Address Type:</mat-label>
+                    <mat-select name="food">
+                        <mat-option value="House"> House
+                        </mat-option>
+                        <mat-option value="Office"> Office
+                        </mat-option>
+                        <mat-option value="Permenant"> Permenant
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Street Name:</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Street Number:</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </li>
+        </div>
+        <div class="row">
+            <li class="mat-form-field--inline">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Village Name:</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Farm Name:</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>City:</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Country:</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </li>
+
+        </div>
+        <div class="row">
+            <li class="mat-form-field--inline">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Postal Code:</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>GPS X:</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>GPS Y:</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </li>
+        </div>
+    </div>
+</ng-template>
+
+<div class="container-fluid">
+    <div class="row">
+        <button mat-raised-button color="primary" [routerLink]="'/searchAddressResults'"
+            (click)="onSearch()">Search</button>
+        <div style="width: 20px;"></div>
+        <button mat-raised-button color="primary" (click)="onClear()">Clear</button>
+    </div>
+</div>

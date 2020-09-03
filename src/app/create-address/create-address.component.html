@@ -1,0 +1,107 @@
+<div class='container-fluid'>
+    <div class="row">
+        <h1 style="font-family:verdana; font-size:150%; color:blue;">Create Address</h1>
+    </div>
+    <div class="row">
+        <li class="mat-form-field--inline">
+            <mat-form-field class="example-full-width">
+                <mat-label>GPS X</mat-label>
+                <input type="text" matInput [formControl]="xControl" [matAutocomplete]="autoX">
+                <mat-autocomplete #autoX="matAutocomplete">
+                    <mat-option *ngFor="let option of xFilteredOptions | async" [value]="option.value">
+                        {{option.value}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>GPS Y</mat-label>
+                <input type="text" matInput [formControl]="yControl" [matAutocomplete]="autoY">
+                <mat-autocomplete #autoY="matAutocomplete">
+                    <mat-option *ngFor="let option of yFilteredOptions | async" [value]="option.value">
+                        {{option.value}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>GPS Z</mat-label>
+                <input type="text" matInput [formControl]="zControl" [matAutocomplete]="autoZ">
+                <mat-autocomplete #autoZ="matAutocomplete">
+                    <mat-option *ngFor="let option of zFilteredOptions | async" [value]="option.value">
+                        {{option.value}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <!-- <mat-form-field class="example-full-width">
+                <mat-label>GPS X:</mat-label>
+                <input matInput>
+            </mat-form-field> -->
+            <!-- <mat-form-field class="example-full-width">
+                <mat-label>GPS Y:</mat-label>
+                <input matInput>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>GPS Z:</mat-label>
+                <input matInput>
+            </mat-form-field> -->
+            <mat-form-field class="example-full-width">
+                <mat-label>Notes</mat-label>
+                <input type="text" matInput [formControl]="notesControl" [matAutocomplete]="autoNotes">
+                <mat-autocomplete #autoNotes="matAutocomplete">
+                    <mat-option *ngFor="let option of notesFilteredOptions | async" [value]="option.value">
+                        {{option.value}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </li>
+    </div>
+    <div class="row">
+        <li class="mat-form-field--inline">
+            <mat-form-field class="example-full-width">
+                <mat-label>Country Code</mat-label>
+                <input type="text" matInput [formControl]="countryControl" [matAutocomplete]="autoCountry">
+                <mat-autocomplete #autoCountry="matAutocomplete">
+                    <mat-option *ngFor="let option of countryFilteredOptions | async" [value]="option.value">
+                        {{option.value}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Primary Language:</mat-label>
+                <mat-select name="language">
+                    <mat-option value="English"> English
+                    </mat-option>
+                    <mat-option value="Swedish"> Swedish
+                    </mat-option>
+                    <mat-option value="Hindi"> Hindi
+                    </mat-option>
+                    <mat-option value="Spanish"> Spanish
+                    </mat-option>
+                    <mat-option value="Denish"> Denish
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Valid From:</mat-label>
+                <input matInput [matDatepicker]="from" [formControl]="fromDateControl">
+                <mat-datepicker-toggle matSuffix [for]="from"></mat-datepicker-toggle>
+                <mat-datepicker #from></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Valid To:</mat-label>
+                <input matInput [matDatepicker]="to" [formControl]="toDateControl">
+                <mat-datepicker-toggle matSuffix [for]="to"></mat-datepicker-toggle>
+                <mat-datepicker #to></mat-datepicker>
+            </mat-form-field>
+        </li>
+    </div>
+    <div class="row">
+        <button mat-raised-button color="primary" (click)="onCreate()">Submit</button>
+        <div style="width: 20px;"></div>
+        <button mat-raised-button color="primary" (click)="onClear()">Clear</button>
+    </div>
+    <div class="row" style="height: 10px;">
+    </div>
+    <div class="row" *ngIf="addressCreated" style="color: blue;">
+        <span><b>{{bottomMessage}}</b></span>
+    </div>
+</div>

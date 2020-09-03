@@ -1,0 +1,74 @@
+<div class='container-fluid'>
+    <div class="row">
+        <span style="font-style: italic;color: blue;">The results for the criteria - 
+            <b> Address Type: House, GPSX: 34, GPSY: 56 </b> </span>
+    </div>
+
+    <div class="row">
+        <div style="width: 170%;">
+            <table mat-table [dataSource]="dataSource">
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="addressId">
+                    <th mat-header-cell *matHeaderCellDef> Address Id </th>
+                    <td mat-cell *matCellDef="let element">  
+                        <a fxFlexFill [routerLink]="'/searchAddress'" class="mat-row-link">{{element.addressId}}</a>
+                    </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="streetName">
+                    <th mat-header-cell *matHeaderCellDef> StreetName </th>
+                    <td mat-cell *matCellDef="let element"> {{element.streetName}} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="streetNumber">
+                    <th mat-header-cell *matHeaderCellDef> StreetNumber </th>
+                    <td mat-cell *matCellDef="let element"> {{element.streetNumber}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="houseLetter">
+                    <th mat-header-cell *matHeaderCellDef> HouseLetter </th>
+                    <td mat-cell *matCellDef="let element"> {{element.houseLetter}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="villageName">
+                    <th mat-header-cell *matHeaderCellDef> VillageName </th>
+                    <td mat-cell *matCellDef="let element"> {{element.villageName}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="farmName">
+                    <th mat-header-cell *matHeaderCellDef> FarmName </th>
+                    <td mat-cell *matCellDef="let element"> {{element.farmName}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="city">
+                    <th mat-header-cell *matHeaderCellDef> City </th>
+                    <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="country">
+                    <th mat-header-cell *matHeaderCellDef> Country </th>
+                    <td mat-cell *matCellDef="let element"> {{element.country}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="postalCode">
+                    <th mat-header-cell *matHeaderCellDef> PostalCode </th>
+                    <td mat-cell *matCellDef="let element"> {{element.postalCode}} </td>
+                </ng-container>
+
+                <!-- <ng-container>
+                    <td mat-cell> <button mat-raised-button color="primary" [routerLink]="'/searchAddress'">Edit</button> </td>
+                </ng-container> -->
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
+        <button mat-raised-button color="primary" [routerLink]="'/searchAddress'">Back</button>
+    </div>
+</div>
